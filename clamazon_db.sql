@@ -7,18 +7,10 @@ CREATE TABLE products (
   item_id INT NOT NULL,
   product_name VARCHAR(100) NULL,
   department_name VARCHAR(100) NULL,
-  price DECIMAL(4,2) NULL,
+  price DECIMAL(15,2) NULL,
   stock_quantity INT NULL,
-
---   raw_total DECIMAL(10,4) NULL,
---   raw_usa DECIMAL(10,4) NULL,
---   raw_uk DECIMAL(10,4) NULL,
---   raw_eur DECIMAL(10,4) NULL,
---   raw_row DECIMAL(10,4) NULL,
   PRIMARY KEY (item_id)
 );
-
-SELECT * FROM products;
 
 INSERT INTO products (product_name, department_name, price, stock_quantity)
 VALUES
@@ -30,5 +22,8 @@ VALUES
     ("Spatula", "Cooking", 11.99, 20),
     ("FujiFilm XF10 Camera", "Photography", 459.99, 6),
     ("Soccer Ball", "Sports", 19.99, 22),
-
+    ("Lego X-Wing Starfighter", "Toys", 24.99, 4),
+    ("Lego TIE Fighter", "Sports", 29.99, 3)
 ;
+
+SELECT * FROM products;
