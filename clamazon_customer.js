@@ -38,6 +38,8 @@ function mainProgram() {
     console.log("****** WELCOME TO CLAmazon! ******" + "\n" +
                 " The useful store with the awkward name.");
 
+    
+
     inquirer
         .prompt({
             name: "action",
@@ -55,9 +57,9 @@ function mainProgram() {
                     findById();
                     break;
 
-                case "List All Products":
-                    listAllProducts();
-                    break;
+                // case "List All Products":
+                //     listAllProducts();
+                //     break;
                 case "Exit Program":
                     console.log("Goodbye!");
             }
@@ -66,9 +68,13 @@ function mainProgram() {
 
 
 function findById(){
-    console.log("ID!")
+    inquirer.prompt({
+        name: "action",
+        type: ""
+    })
 }
 
-function listAllProducts(){
-    console.log("List!");
-}
+// DEPRECATED
+// function listAllProducts(){
+//     console.log("List!");
+// }
