@@ -27,16 +27,48 @@ let connection = mysql.createConnection({
     database: "bamazon_db"
 });
 
-connection.connect(function(err){
+connection.connect(function (err) {
     if (err) throw err;
     console.log("You have connected to the database. ID: " + connection.threadId + "\n");
     mainProgram();
 });
 // END LOCALHOST SERVER
 
-function mainProgram(){
-    console.log("Program works!");
+function mainProgram() {
+    console.log("****** WELCOME TO CLAmazon! ******" + "\n" +
+                " The useful store with the awkward name.");
 
-};
+    inquirer
+        .prompt({
+            name: "action",
+            type: "rawlist",
+            message: "What would you like to do?",
+            choices: [
+                "Find Products by ID",
+                "List All Products",
+                "Exit Program"
+            ]
+        })
+        .then(function (answer) {
+            switch (answer.action) {
+                case "Find Products by ID":
+                    findById();
+                    break;
 
-// mainProgram();
+                case "List All Products":
+                    listAllProducts();
+                    break;
+                case "Exit Program":
+                    console.log("Goodbye!");
+            }
+        });
+}
+
+
+function findById(){
+    console.log("ID!")
+}
+
+function listAllProducts(){
+    console.log("List!");
+}
