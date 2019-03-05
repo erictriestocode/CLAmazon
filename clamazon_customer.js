@@ -47,14 +47,14 @@ function mainProgram() {
             message: "What would you like to do?",
             choices: [
                 "Find Products by ID",
-                "List All Products",
+                // "List All Products",
                 "Exit Program"
             ]
         })
         .then(function (answer) {
             switch (answer.action) {
-                case "Find Products by ID":
-                    findById();
+                case "List Products by ID":
+                    listItems();
                     break;
 
                 // case "List All Products":
@@ -67,12 +67,18 @@ function mainProgram() {
 }
 
 
-function findById(){
-    inquirer.prompt({
-        name: "action",
-        type: ""
+function listItems(){
+    connection.query("SELECT * FROM bamazon_db", function(err, res){
+        console.log(res);
     })
 }
+
+// function findById(){
+//     inquirer.prompt({
+//         name: "action",
+//         type: ""
+//     })
+// }
 
 // DEPRECATED
 // function listAllProducts(){
