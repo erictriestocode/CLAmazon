@@ -2,17 +2,16 @@ const inquirer = require("inquirer");
 const mysql = require("mysql");
 
 let connection = mysql.createConnection({
-    host: "localhost",
-    port: 3000,
+    host: "server1.deprecatedhope.com",
+    port: 9119,
     user: "customer",
-    password: "",
+    password: "customerpassword",
     database: "bamazon_db"
 });
 
-let connection.connect(function(err){
+connection.connect(function(err){
     if (err) throw err;
     console.log("You have connected to the database. ID: " + connection.threadId + "\n");
-    mainProgram();
 });
 
 
@@ -21,4 +20,4 @@ function mainProgram(){
 
 };
 
-mainProgram();
+// mainProgram();
