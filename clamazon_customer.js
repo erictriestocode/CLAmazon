@@ -31,7 +31,6 @@ connection.connect(function (err) {
     if (err) throw err;
     console.log("You have connected to the database. ID: " + connection.threadId + "\n");
     listItems();
-    mainProgram();
 });
 // END LOCALHOST SERVER
 
@@ -69,8 +68,9 @@ function listItems() {
         " The useful store with the awkward name.");
     connection.query("SELECT * FROM products;", function (err, res) {
         if (err) throw err;
-        console.log(res);
-        connection.end();
+        console.table(res);
+        mainProgram();
+        // connection.end();
     });
 }
 
