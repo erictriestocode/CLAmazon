@@ -80,28 +80,23 @@ function listItems() {
 }
 
 function selectItem(){
-    inquirer.prompt({
-        name: "action",
-        type: "input",
-        message: "Which Item ID would you like to purchase?",
-    }).then(function (answer){
-        userItem = answer.action;
-        console.log("You Selected: " + userItem);
+    let questions = [
+        {
+            name: "actionitem",
+            type: "input",
+            message: "Which Item ID would you like to purchase?",
+        },
+        {
+            name: "itemquantity",
+            type: "input",
+            message: "How many would you like to Purchase?"
+    
+        }
+    ];
+
+    inquirer.prompt(questions).then(function (answer){
+        userItem = answer.actionitem;
+        userQuantity = answer.itemquantity
+        console.log("You Selected: " + userItem + " and Quantity: " + userQuantity);
     })
 }
-
-function quantityItem(){
-    inquirer.prompt()
-}
-
-// function findById(){
-//     inquirer.prompt({
-//         name: "action",
-//         type: ""
-//     })
-// }
-
-// DEPRECATED
-// function listAllProducts(){
-//     console.log("List!");
-// }
