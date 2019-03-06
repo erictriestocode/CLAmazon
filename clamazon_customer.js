@@ -103,10 +103,22 @@ function selectItem(){
     })
 }
 
-function stockCheck(item,stock){
+function stockCheck(item,needed){
     connection.query("SELECT stock_quantity FROM products WHERE item_id = ?", item, function (err,result){
         if (err) throw err;
-        console.log(result[0].stock_quantity);
+        // console.log(result[0].stock_quantity);
+        instock = result[0].stock_quantity;
+        if (needed > instock){
+            console.log("Not Enough Stock for your Order!")
+            mainProgram();
+        } else {
+            completePurchase();
+            mainProgram();
+        };
     })
 
+}
+
+function completePurchase(){
+    console.log("Plenty of stock!");
 }
