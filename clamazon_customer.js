@@ -80,7 +80,7 @@ function listItems() {
 }
 
 // Inquirer code here based on pizza example from inquirer documentation
-function selectItem(){
+function selectItem() {
     let questions = [
         {
             name: "actionitem",
@@ -91,34 +91,54 @@ function selectItem(){
             name: "itemquantity",
             type: "input",
             message: "How many would you like to Purchase?"
-    
+
         }
     ];
 
-    inquirer.prompt(questions).then(function (answer){
+    inquirer.prompt(questions).then(function (answer) {
         userItem = answer.actionitem;
         userQuantity = answer.itemquantity
         console.log("You Selected: " + userItem + " and Quantity: " + userQuantity);
-        stockCheck(userItem,userQuantity);
+        stockCheck(userItem, userQuantity);
     })
 }
 
-function stockCheck(item,needed){
-    connection.query("SELECT stock_quantity FROM products WHERE item_id = ?", item, function (err,result){
+function stockCheck(item, needed) {
+    connection.query("SELECT stock_quantity FROM products WHERE item_id = ?", item, function (err, result) {
         if (err) throw err;
         // console.log(result[0].stock_quantity);
         instock = result[0].stock_quantity;
-        if (needed > instock){
+        if (needed > instock) {
             console.log("Not Enough Stock for your Order!")
             mainProgram();
         } else {
-            completePurchase();
-            mainProgram();
+            completePurchase(instock, needed);
+            // mainProgram();
         };
     })
 
 }
 
-function completePurchase(){
+function completePurchase(qty, amt) {
     console.log("Plenty of stock!");
+    var newstock = qty - amt;
+    console.log("Purchasing Item...\n");
+    var query = connection.query(
+        "UPDATE products SET ? WHERE ?",
+        [
+            {
+                stock_quantity: newstock
+            },
+            {
+                item_id: userItem
+            }
+        ],
+        function (err, res) {
+            if(err) throw err;
+            console.log(res.affectedRows + " products purchased2
+            !\n");
+            listItems();
+        }
+    );
+    
 }
