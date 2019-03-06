@@ -79,6 +79,7 @@ function listItems() {
     });
 }
 
+// Inquirer code here based on pizza example from inquirer documentation
 function selectItem(){
     let questions = [
         {
@@ -98,5 +99,14 @@ function selectItem(){
         userItem = answer.actionitem;
         userQuantity = answer.itemquantity
         console.log("You Selected: " + userItem + " and Quantity: " + userQuantity);
+        stockCheck(userItem,userQuantity);
     })
+}
+
+function stockCheck(item,stock){
+    connection.query("SELECT stock_quantity FROM products WHERE item_id = ?", item, function (err,result){
+        if (err) throw err;
+        console.log(result[0].stock_quantity);
+    })
+
 }
