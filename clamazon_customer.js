@@ -1,6 +1,10 @@
 let inquirer = require("inquirer");
 let mysql = require("mysql");
 
+let userItem;
+let userQuantity;
+
+
 //HOSTED SERVER CONNECTION (NOT WORKING)
 
 // let connection = mysql.createConnection({
@@ -42,15 +46,15 @@ function mainProgram() {
             type: "rawlist",
             message: "What would you like to do?",
             choices: [
-                "Find Products by ID",
+                "Buy Products by ID",
                 // "List All Products",
                 "Exit Program"
             ]
         })
         .then(function (answer) {
             switch (answer.action) {
-                case "List Products by ID":
-                    listItems();
+                case "Buy Products by ID":
+                    selectItem();
                     break;
 
                 // case "List All Products":
@@ -58,6 +62,8 @@ function mainProgram() {
                 //     break;
                 case "Exit Program":
                     console.log("Goodbye!");
+                    connection.end();
+                    process.exit(1);
             }
         });
 }
@@ -70,8 +76,22 @@ function listItems() {
         if (err) throw err;
         console.table(res);
         mainProgram();
-        // connection.end();
     });
+}
+
+function selectItem(){
+    inquirer.prompt({
+        name: "action",
+        type: "input",
+        message: "Which Item ID would you like to purchase?",
+    }).then(function (answer){
+        userItem = answer.action;
+        console.log("You Selected: " + userItem);
+    })
+}
+
+function quantityItem(){
+    inquirer.prompt()
 }
 
 // function findById(){
