@@ -30,15 +30,12 @@ let connection = mysql.createConnection({
 connection.connect(function (err) {
     if (err) throw err;
     console.log("You have connected to the database. ID: " + connection.threadId + "\n");
+    listItems();
     mainProgram();
 });
 // END LOCALHOST SERVER
 
 function mainProgram() {
-    console.log("****** WELCOME TO CLAmazon! ******" + "\n" +
-                " The useful store with the awkward name.");
-
-    
 
     inquirer
         .prompt({
@@ -67,10 +64,14 @@ function mainProgram() {
 }
 
 
-function listItems(){
-    connection.query("SELECT * FROM bamazon_db", function(err, res){
+function listItems() {
+    console.log("****** WELCOME TO CLAmazon! ******" + "\n" +
+        " The useful store with the awkward name.");
+    connection.query("SELECT * FROM products;", function (err, res) {
+        if (err) throw err;
         console.log(res);
-    })
+        connection.end();
+    });
 }
 
 // function findById(){
