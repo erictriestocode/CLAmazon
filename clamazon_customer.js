@@ -135,8 +135,7 @@ function completePurchase(qty, amt) {
         ],
         function (err, res) {
             if(err) throw err;
-            console.log(res.affectedRows + " products purchased2
-            !\n");
+            console.log(res.affectedRows + " products purchased" + "!\n");
             listItems();
         }
     );
