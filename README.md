@@ -24,9 +24,9 @@ And you will immediately be shown available products and simple to follow prompt
 * Below we have the initial welcome display upon running the program:
 ![Alt text](/screenshots/mainprogram.png?raw=true "Main Program")
 * Assuming you wish to purchase an Item, you would select "1", then the Item ID and Quantity. Here We decide to purchase two soccer balls:
-![Alt text](/screenshots/about%20to%20purchase.png?raw=true "About to Purchase")
+![Alt text](/screenshots/abouttopurchase.png?raw=true "About to Purchase")
 * Since this was successful, we have a confirmation of the purchase and the available quantities are updated:
-![Alt text](/screenshots/after%20purchase.png?raw=true "After Purpose")
+![Alt text](/screenshots/afterpurchase.png?raw=true "After Purpose")
 * If an item does not have enough stock to satisfy your purchase, you will be rejected with the following and asked to restart:
 ![Alt text](/screenshots/rejected.png?raw=true "Rejected")
 
