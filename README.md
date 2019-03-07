@@ -23,6 +23,14 @@ And you will immediately be shown available products and simple to follow prompt
 ## Screenshots
 * Below we have the initial welcome display upon running the program:
 ![Alt text](/screenshots/mainprogram.png?raw=true "Main Program")
+* Assuming you wish to purchase an Item, you would select "1", then the Item ID and Quantity. Here We decide to purchase two soccer balls:
+![Alt text](/screenshots/about+to+purchase.png?raw=true "About to Purchase")
+* Since this was successful, we have a confirmation of the purchase and the available quantities are updated:
+![Alt text](/screenshots/after+purchase.png?raw=true "After Purpose")
+* If an item does not have enough stock to satisfy your purchase, you will be rejected with the following and asked to restart:
+![Alt text](/screenshots/rejected.png?raw=true "Rejected")
+
+
 ### Other Notes
 * clamazon_manager.js and clamazon_supervisor.js are currently placeholder only(upcoming features)
 * rerouting to a remote SQL server is in the works; instructions for setup to be included
